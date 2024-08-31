@@ -4,7 +4,7 @@ import { Icons } from "@/components/icons";
 export const DATA = {
   name: "Harsh Jain",
   initials: "HJ",
-  url: "https://harsh-jain.io",
+  url: "https://portfolio-website-harsh-jain.vercel.app/",
   location: "Pune, Maharashtra",
   locationLink: "https://www.google.com/maps/place/Pune",
   description:
