@@ -119,7 +119,7 @@ export const DATA = {
     {
       school: "St. Anthony's Sr. Sec. School",
       href: "https://sasudaipur.com",
-      degree: "Secondary Secondary Certificate",
+      degree: "Secondary School Certificate",
       logoUrl: "/sas.png",
       start: "2017",
       end: "2019",
