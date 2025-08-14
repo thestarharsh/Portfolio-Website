@@ -1,4 +1,10 @@
 import { CertificationCard } from "@/components/certification-card";
+import dynamic from "next/dynamic";
+
+const CodingProfiles = dynamic(
+  () => import("@/components/coding-profiles").then((mod) => mod.CodingProfiles),
+  { ssr: false }
+);
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
@@ -192,6 +198,11 @@ export default function Page() {
             </ul>
           </BlurFade>
         </div>
+      </section>
+      <section id="coding-profiles">
+        <BlurFade delay={BLUR_FADE_DELAY * 16}>
+          <CodingProfiles profiles={DATA.codingProfiles} />
+        </BlurFade>
       </section>
       <section id="contact">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">

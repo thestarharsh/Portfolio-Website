@@ -1,4 +1,4 @@
-import { CodeIcon, HomeIcon, NotebookIcon } from "lucide-react";
+import { HomeIcon, NotebookIcon } from "lucide-react";
 import { Icons } from "@/components/icons";
 
 export const DATA = {
@@ -8,29 +8,42 @@ export const DATA = {
   location: "Pune, Maharashtra",
   locationLink: "https://www.google.com/maps/place/Pune",
   description:
-    "From Uncertain Beginnings to Thriving as a Software Engineer: Driven by a passion for problem-solving and a commitment to helping others. Actively networking on LinkedIn.",
+    "I'm a Software Engineer specializing in building scalable frontend solutions and dynamic user interfaces. I thrive on solving complex problems and creating seamless digital experiences at innovative tech startups.",
   summary:
-    "In 2021, I dove into a Computer Science and Engineering degree and emerged as a Software Engineer. Now, I'm bringing my frontend skills to life at an innovative advertising services startup, where I craft dynamic UIs that make an impact.",
+    "A Software Engineer (Frontend) specializing in React, with professional experience in building scalable, user-focused web applications. Currently, I work at an adtech startup, developing features used by major agencies like Hyundai, Jeep, Citroën, LimeRoad, and VW, while enhancing engagement through AI-driven solutions. I’ve also solved 1000+ coding problems and achieved notable milestones in competitive programming.",
   avatarUrl: "/myphoto.png",
   skills: [
-    "Java",
-    "Data Structures",
-    "Algorihthms",
-    "C/C++",
-    "React",
-    "HTML",
-    "CSS",
     "JavaScript",
+    "TypeScript",
+    "React",
     "Redux",
-    "MongoDB",
-    "MySQL",
+    "HTML5",
+    "CSS3",
+    "Next.js",
     "Node.js",
     "Express.js",
+    "MongoDB",
+    "MySQL",
+    "PostgreSQL",
+    "Tailwind CSS",
+    "Tanstack Query",
+    "Prisma ORM",
+    "OpenAI",
+    "Assembly AI",
+    "Gemini AI",
+    "Data Structures",
+    "Algorithms",
+    "Git",
+    "Linux",
+    "Firebase",
+    "Appwrite",
+    "Java",
+    "Python",
+    "C/C++",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
-    { href: "https://leetcode.com/u/the_star_harsh/", icon: CodeIcon, label: "LeetCode"},
   ],
   contact: {
     email: "talatiharsh19@gmail.com",
@@ -40,21 +53,18 @@ export const DATA = {
         name: "GitHub",
         url: "https://github.com/thestarharsh",
         icon: Icons.github,
-
         navbar: true,
       },
       LinkedIn: {
         name: "LinkedIn",
         url: "https://www.linkedin.com/in/harsh-jain-635636218/",
         icon: Icons.linkedin,
-
         navbar: true,
       },
       X: {
         name: "X",
         url: "https://twitter.com/the_star_harsh",
         icon: Icons.x,
-
         navbar: true,
       },
       Youtube: {
@@ -67,7 +77,6 @@ export const DATA = {
         name: "Send Email",
         url: "#",
         icon: Icons.email,
-
         navbar: false,
       },
     },
@@ -75,16 +84,28 @@ export const DATA = {
 
   work: [
     {
-      company: "OnlineSales.ai",
-      href: "https://hyperlocal.onlinesales.ai",
+      company: "Localium",
+      href: "https://localium.ai",
       badges: [],
-      location: "Pune",
-      title: "Software Design Engineer Intern",
-      logoUrl: "/onlinesales-ai.png",
-      start: "Jun 2024",
+      location: "Pune, Maharashtra",
+      title: "Software Engineer",
+      logoUrl: "/localium.png",
+      start: "Jun 2025",
       end: "Present",
       description:
-        "Since June 2024, I have been working in Pune, Maharashtra, India, where I implemented solutions for broadly defined problems related to advertising services, leading to a 3X increase in demand generation. I developed code using JavaScript to build large-scale, robust distributed systems for over 1200 channel partners. I also built and deployed new features for admin dashboards to production, which accelerated application development. Additionally, I integrated APIs into the frontend to enhance functionality and improve user experience.",
+        "Developed advanced audience support features for PMax, Shopping PMax Google Ads, and Meta Advantage Plus Audiences. Implemented Bulk Google Campaign Keyword Targeting, resolved frontend vulnerabilities, and led code migration efforts to improve platform performance and maintainability. Leveraged AI-assisted tools like Claude Code to optimize development efficiency, automate repetitive tasks, and accelerate feature delivery.",
+    },
+    {
+      company: "Osmos (OnlineSales.ai)",
+      href: "https://osmos.ai",
+      badges: [],
+      location: "Pune, Maharashtra",
+      title: "Software Design Engineer Intern",
+      logoUrl: "/osmos.png",
+      start: "Jun 2024",
+      end: "May 2025",
+      description:
+        "Built and optimized Custom Audience Targeting features for Meta and Google campaigns, now used by 15+ agencies. Enhanced Used Car Inventory Management with dynamic Inventory Forms and Tables leveraging efficient state management. Developed Ad Creative Creation support for iOS & Android with Configuration-Based Overrides, improving maintainability and scalability of the codebase.",
     },
     {
       company: "OpenBootcamp",
@@ -93,20 +114,21 @@ export const DATA = {
       location: "Remote",
       title: "Web Developer Fellow",
       logoUrl: "/theopenbootcamp.jpeg",
-      start: "Mar 2024",
-      end: "May 2024",
+      start: "Jan 2024",
+      end: "Mar 2024",
       description:
-        "From March to May 2024, I completed an intensive 8-week full-stack web development internship program remotely, gaining hands-on experience in web development. During this period, I mastered front-end technologies, including JavaScript, HTML5, CSS, and React.js, while also developing back-end skills with Node.js, Express, and MongoDB. I demonstrated strong collaboration and problem-solving abilities by working on real-world projects and assignments throughout the program.",
+        "Completed a full-stack Web Development fellowship focused on building real-world applications. Gained hands-on experience with HTML, CSS, JavaScript, React, and Node.js. Developed responsive web projects and contributed to collaborative coding exercises, enhancing practical skills in frontend and backend development.",
     },
-  ],
+  ],  
   education: [
     {
-      school: "MIT World Peace University",
+      school: "Maharashtra Institute of Technology",
       href: "https://mitwpu.edu.in",
-      degree: "B.Tech Computer Science",
+      degree: "B.Tech Computer Science and Engineering",
       logoUrl: "/mitwpu.jpeg",
       start: "2021",
       end: "2025",
+      cgpa: "9.26/10"
     },
     {
       school: "St. Anthony's Sr. Sec. School",
@@ -127,60 +149,102 @@ export const DATA = {
   ],
   projects: [
     {
-      title: "Friends and Bills",
-      href: "https://friends-and-bills.netlify.app/",
-      dates: "Feb 2024 - Mar 2024",
+      title: "CozyGripz - A Phone Case E-Commerce Platform",
+      href: "https://cozygripz.com",
+      dates: "Jun 2025 - Jul 2025",
       active: true,
       description:
-        "I built a responsive user interface using HTML5, CSS3, and JavaScript to ensure compatibility with all screen sizes. I implemented visualization features by adding graphs to display split expenses on the front end.",
+        "Built a fully functional live e-commerce platform for phone cases using AI-assisted development tools like Cursor and Replit, with zero code manually written. Implemented Razorpay integration for seamless payments, optimized product listings, checkout flows, and overall user experience, demonstrating rapid prototyping and AI-driven web development.",
       technologies: [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "UI",
+        "Replit",
+        "Razorpay",
+        "PostgreSQL",
+        "Next.js",
+        "Tailwind CSS",
+        "Responsive Design"
       ],
       links: [
-        {
-          type: "Website",
-          href: "https://friends-and-bills.netlify.app/",
-          icon: <Icons.globe className="size-3" />,
-        },
+        { type: "Live", href: "https://cozygripz.com", icon: <Icons.globe className="size-3" /> },
+        { type: "Source", href: "https://github.com/thestarharsh/CozyTheme", icon: <Icons.github className="size-3" /> }
       ],
-      image: "/fandbpreview.png",
+      image: "/cozygripz-preview.png",
       video: "",
     },
     {
-      title: "Metro Discount System",
-      href: "https://colab.research.google.com/drive/1U3IBEPlAII-56aYC2arWhNzg1Kj9-FG_?usp=sharing",
-      dates: "Oct 2023 - Dec 2024",
+      title: "Slide - An Instagram Chat Automation Platform",
+      href: "https://slide-next15.vercel.app",
+      dates: "Jan 2025 - May 2025",
       active: true,
       description:
-        "Developed a Python script to process student records, generate QR codes, and automate verification, achieving 95% accuracy and efficiency.",
+        "Developed a platform to automate Instagram interactions with Comment and DM triggers. Engineered AI-driven chat models that dynamically generate replies, increasing engagement by up to 300%. Added subscription-based AI automation at ₹999/month and integrated Razorpay for secure, seamless payments. Real-time slide presentation functionality also included, allowing collaborative content creation and sharing.",
       technologies: [
-        "Python",
-        "Numpy",
-        "Faker",
-        "Colab",
-        "Data Cleaning",
+        "React",
+        "Next.js",
+        "Webhooks",
+        "Instagram API",
+        "AI Integration",
+        "Razorpay"
       ],
       links: [
-        {
-          type: "Source",
-          href: "https://colab.research.google.com/drive/1U3IBEPlAII-56aYC2arWhNzg1Kj9-FG_?usp=sharing",
-          icon: <Icons.github className="size-3" />,
-        },
+        { type: "Live", href: "https://slide-next15.vercel.app", icon: <Icons.globe className="size-3" /> },
+        { type: "Source", href: "https://github.com/thestarharsh/slide", icon: <Icons.github className="size-3" /> },
       ],
-      image: "/mdspreview.png",
+      image: "/slide-preview.png",
+      video: "",
+    },
+    {
+      title: "Gitsync AI - GitHub & Audio Analyzer",
+      href: "https://gitsync-next15.vercel.app",
+      dates: "Dec 2024 - Jan 2025",
+      active: true,
+      description:
+        "Built a platform to analyze GitHub repositories and answer developer queries using AI. Stored repository files as vector embeddings for fast retrieval, provided AI-powered summaries of recent commits, and integrated Assembly AI to process audio files and generate meeting notes. Razorpay implemented for credit-based usage (1 file = 1 credit).",
+      technologies: [
+        "React",
+        "Next.js",
+        "OpenAI API",
+        "Assembly AI",
+        "Vector Embeddings",
+        "Prisma ORM",
+        "Razorpay"
+      ],
+      links: [
+        { type: "Live", href: "https://gitsync-next15.vercel.app", icon: <Icons.globe className="size-3" /> },
+        { type: "Source", href: "https://github.com/thestarharsh/gitsync", icon: <Icons.github className="size-3" /> },
+      ],
+      image: "/gitsync-preview.png",
+      video: "",
+    },
+    {
+      title: "Jira Clone - A Project Management Platform",
+      href: "https://jira-clone-next15.vercel.app",
+      dates: "Oct 2024 - Dec 2024",
+      active: true,
+      description:
+        "Developed a Jira alternative with Workspaces, Projects, Epics, Tasks, Kanban, and Calendar views. Implemented Invite System and Role-Based Access Control for secure collaboration. Added real-time task editing, deletion, and image uploads, with Task Analytics tracking progress and improving productivity by 30%.",
+      technologies: [
+        "React",
+        "Next.js",
+        "Tailwind CSS",
+        "Hono",
+        "React Query",
+        "Appwrite"
+      ],
+      links: [
+        { type: "Live", href: "https://jira-clone-next15.vercel.app", icon: <Icons.globe className="size-3" /> },
+        { type: "Source", href: "https://github.com/thestarharsh/jira-clone", icon: <Icons.github className="size-3" /> },
+      ],
+      image: "/jira-clone-preview.png",
       video: "",
     },
   ],
   certifications: [
     {
       title: "Goldman Sachs Software Engineering Simulation",
-      dates: "August 2024",
+      dates: "January 2024 - March 2024",
       location: "Virtual",
       description:
-        "Completed Goldman Sachs Virtual Experience Program in software engineering, focusing on IT security. Detected vulnerabilities by cracking MD5 hashed passwords using HashCat. Recommended using stronger hashing algorithms like bcrypt or Argon2 with salting. Drafted a memo proposing actionable IT security improvements.",
+        "Conducted IT security assessment at Goldman Sachs, identifying outdated password hashing vulnerabilities. Cracked weak passwords using Hashcat software and proposed stronger hashing algorithms like bcrypt or Argon2 with salting. Drafted comprehensive security recommendations and implemented actionable IT security improvements.",
       image:
         "https://www.pngmart.com/files/23/Goldman-Sachs-Logo-PNG-Image.png",
       mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
@@ -188,14 +252,20 @@ export const DATA = {
     },
     {
       title: "JP Morgan Chase Software Engineering Simulation",
-      dates: "Febraury 2024",
+      dates: "January 2024 - March 2024",
       location: "Virtual",
       description:
-        "I configured a local development environment using TypeScript, Python, and essential tools, fixing broken files in the repository to ensure accurate web application output as part of an open-source contribution. I utilized JPMorgan Chase's Perspective library for live graph visualization and employed GitHub for version control and collaboration.",
+        "Configured secure development environment for Python3 and resolved repository conflicts. Built real-time financial dashboard using JPMorgan Chase Perspective library for live graph visualization. Utilized GitHub for version control and collaboration in an enterprise environment.",
       image:
         "https://www.pngplay.com/wp-content/uploads/3/JPMorgan-Chase-Logo-Background-PNG-Image.png",
       mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
       links: [],
     },
   ],
+  codingProfiles: {
+    leetcode: "https://leetcode.com/u/the_star_harsh/",
+    geeksforgeeks: "https://auth.geeksforgeeks.org/user/talatiharsh19",
+    codechef: "https://www.codechef.com/users/the_star_harsh",
+    codeforces: "https://codeforces.com/profile/the_star_harsh"
+  }
 } as const;
