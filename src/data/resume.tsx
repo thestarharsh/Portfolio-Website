@@ -265,7 +265,7 @@ export const DATA = {
   codingProfiles: {
     leetcode: "https://leetcode.com/u/the_star_harsh/",
     geeksforgeeks: "https://auth.geeksforgeeks.org/user/talatiharsh19",
-    codechef: "https://www.codechef.com/users/the_star_harsh",
+    codechef: "https://www.codechef.com/users/harshjainmit",
     codeforces: "https://codeforces.com/profile/the_star_harsh"
   }
 } as const;
