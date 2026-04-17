@@ -5,6 +5,7 @@ import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
+
 import "./globals.css";
 
 const fontSans = FontSans({
@@ -56,14 +57,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
-          fontSans.variable
-        )}
+        className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}
       >
-        <ThemeProvider attribute="class" defaultTheme="light">
+        <ThemeProvider attribute="class" defaultTheme="dark">
           <TooltipProvider delayDuration={0}>
-            {children}
+            <div className="pointer-events-none fixed inset-0 -z-10 bg-[linear-gradient(to_right,hsl(var(--border)/0.14)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.14)_1px,transparent_1px)] bg-[size:56px_56px] sm:bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_85%_60%_at_50%_0%,black,transparent)]" />
+            <div className="relative mx-auto flex w-full max-w-6xl flex-col px-4 pb-28 pt-8 sm:px-6 sm:pt-12 lg:px-8 lg:pt-16">
+              {children}
+            </div>
             <Navbar />
           </TooltipProvider>
         </ThemeProvider>

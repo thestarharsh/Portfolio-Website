@@ -2,8 +2,8 @@ import { getPost } from "@/data/blog";
 import { DATA } from "@/data/resume";
 import { formatDate } from "@/lib/utils";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 
 export async function generateMetadata({
   params,
@@ -60,7 +60,7 @@ export default async function Blog({
   }
 
   return (
-    <section id="blog">
+    <section id="blog" className="space-y-6">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -83,18 +83,22 @@ export default async function Blog({
           }),
         }}
       />
-      <h1 className="title font-medium text-2xl tracking-tighter max-w-[650px]">
-        {post.metadata.title}
-      </h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
-        <Suspense fallback={<p className="h-5" />}>
-          <p className="text-sm text-neutral-600 dark:text-neutral-400">
-            {formatDate(post.metadata.publishedAt)}
+      <Link href="/blog" className="inline-block text-sm text-primary hover:underline">
+        ← Back to Blog
+      </Link>
+      <div className="rounded-3xl border border-border/60 bg-card/60 p-6 shadow-xl shadow-primary/10 backdrop-blur-sm sm:p-8">
+        <div className="max-w-3xl space-y-3">
+          <p className="text-xs text-muted-foreground">{formatDate(post.metadata.publishedAt)}</p>
+          <h1 className="title text-3xl font-bold tracking-tight sm:text-4xl">
+            {post.metadata.title}
+          </h1>
+          <p className="text-sm text-muted-foreground sm:text-base">
+            {post.metadata.summary}
           </p>
-        </Suspense>
+        </div>
       </div>
       <article
-        className="prose dark:prose-invert"
+        className="prose prose-neutral max-w-none rounded-3xl border border-border/60 bg-card/50 p-6 leading-7 dark:prose-invert sm:p-8"
         dangerouslySetInnerHTML={{ __html: post.source }}
       ></article>
     </section>

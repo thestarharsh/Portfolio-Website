@@ -1,0 +1,142 @@
+---
+title: "Understanding LLMs: From Data Pipeline to Instruct Model"
+publishedAt: "2026-04-17"
+summary: "A complete practical walkthrough of the LLM pipeline, from pretraining data curation to post training and instruct models."
+---
+
+I wanted one practical mental model for the entire LLM lifecycle.
+
+Most explanations stop at "transformers predict the next token." That is true, but incomplete. The real picture is a full pipeline that starts with web-scale data quality decisions and ends with post training that turns a base model into an instruct model.
+
+This post is my clean walkthrough of that pipeline.
+
+## 1. Pretraining starts with data quality, not architecture
+
+Pretraining quality is heavily constrained by data quality. If the corpus is noisy, duplicated, toxic, or multilingual in uncontrolled ways, the model spends capacity learning garbage patterns.
+
+Important filters and controls in the pipeline:
+
+- **URL filtering** to remove low-quality domains and spam-heavy sources
+- **Text extraction** to strip boilerplate, navigation clutter, and template noise
+- **Language filtering** so language distribution is intentional
+- **Gopher-style filtering** heuristics for quality, toxicity, and repetition
+- **MinHash dedup** to aggressively remove near-duplicate documents
+
+Why this matters: pretraining is expensive. Bad tokens consume compute and reduce downstream capability.
+
+## 2. Ablation and evaluation drive decisions
+
+Good teams do not guess. They run ablation studies and evaluation loops.
+
+- **Ablation** asks what happens if one component is removed or changed
+- **Evaluation** checks if changes improved capability, safety, and stability
+
+Examples:
+
+- What is the effect of stronger dedup thresholds?
+- What is the effect of removing low quality educational domains?
+- Which tokenizer choice gives lower perplexity for the same compute?
+
+This feedback loop is how serious model pipelines improve over time.
+
+## 3. Tokenization and BPE are foundational
+
+Before training the neural network, text is split into tokens. Most modern LLMs use subword tokenization such as BPE.
+
+Why BPE is useful:
+
+- Handles unknown words by splitting into reusable pieces
+- Compresses frequent patterns into fewer tokens
+- Balances vocabulary size and sequence length
+
+Tokenizer design affects everything:
+
+- Training efficiency
+- Context usage
+- Inference cost
+- Cross-language performance
+
+## 4. Neural network training
+
+At pretraining time, the transformer decoder model is trained to predict the next token.
+
+Core components:
+
+- Token embeddings
+- Stacked self-attention blocks
+- MLP layers
+- Residual connections and layer normalization
+
+Objective:
+
+- Minimize next-token prediction loss over huge token streams
+
+As scale increases, the model learns stronger syntax, semantics, and reasoning-like behavior. But it is still a probabilistic sequence model, not a truth engine.
+
+## 5. Inference, Context and KV cache
+
+After training, inference turns the model into an interactive system.
+
+At runtime:
+
+1. Prompt is tokenized
+2. Model processes tokens with attention
+3. Next token is sampled
+4. Repeat until stop condition
+
+Two practical concepts matter a lot:
+
+- **Context window**: how much prior text can be considered
+- **KV cache**: stores key and value tensors from previous steps to avoid recomputing the full prefix every token
+
+KV cache is a major reason modern chat feels responsive for long generations.
+
+## 6. Transformer decoder architecture in plain terms
+
+Decoder-only transformers are common in LLMs because they are efficient for autoregressive generation.
+
+The model attends to prior tokens only, which matches next-token prediction naturally. This architecture scales well and works extremely well for chat, code, summarization, and instruction following after post training.
+
+## 7. Base model vs instruct model
+
+A **base model** is usually the direct result of pretraining. It is capable but not reliably aligned with user intent.
+
+To make it usable for assistants, post training is added:
+
+1. **Supervised fine tuning (SFT)** on high quality instruction-response pairs
+2. **Reward modeling** to learn preference signals
+3. **Reinforcement learning** to optimize outputs toward preferred behavior
+
+This stage is what transforms raw capability into helpful assistant behavior.
+
+## 8. Post training is where product behavior is shaped
+
+Post training controls:
+
+- Helpfulness
+- Honesty calibration
+- Refusal behavior
+- Format adherence
+- Multi-turn conversation quality
+
+Without strong post training, even a powerful base model can feel inconsistent.
+
+## 9. A complete pipeline view
+
+For me, the full LLM pipeline now looks like this:
+
+1. Data collection and quality filtering
+2. Dedup and language controls
+3. Tokenizer design and validation
+4. Large-scale pretraining
+5. Evaluation and ablation feedback loops
+6. SFT plus reward modeling plus reinforcement learning
+7. Inference optimization with context and KV cache
+8. Continuous evaluation in real product scenarios
+
+## Final takeaway
+
+The key learning is simple: LLM performance is not just model size. It is pipeline quality.
+
+High quality data curation, disciplined ablation and evaluation, strong post training, and efficient inference engineering together decide whether a model feels average or exceptional.
+

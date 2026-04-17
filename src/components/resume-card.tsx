@@ -44,8 +44,8 @@ export const ResumeCard = ({
       className="block cursor-pointer"
       onClick={handleClick}
     >
-      <Card className="flex">
-        <div className="flex-none">
+      <Card className="flex border border-border/70 bg-card/70 backdrop-blur-sm transition-colors hover:border-primary/30">
+        <div className="flex-none self-start pl-4 pt-4 sm:pl-5 sm:pt-5">
           <Avatar className="border size-12 m-auto bg-muted-background dark:bg-foreground">
             <AvatarImage
               src={logoUrl}
@@ -55,10 +55,10 @@ export const ResumeCard = ({
             <AvatarFallback>{altText[0]}</AvatarFallback>
           </Avatar>
         </div>
-        <div className="flex-grow ml-4 items-center flex-col group">
-          <CardHeader>
-            <div className="flex items-center justify-between gap-x-2 text-base">
-              <h3 className="inline-flex items-center justify-center font-semibold leading-none text-xs sm:text-sm">
+        <div className="group ml-4 min-w-0 flex-grow flex-col items-center">
+          <CardHeader className="p-4 pr-4 sm:p-5 sm:pr-5">
+            <div className="flex flex-col gap-1 text-base sm:flex-row sm:items-start sm:justify-between sm:gap-x-2">
+              <h3 className="flex min-w-0 items-center gap-1 font-semibold leading-none text-xs sm:text-sm">
                 {title}
                 {badges && (
                   <span className="inline-flex gap-x-1">
@@ -75,12 +75,12 @@ export const ResumeCard = ({
                 )}
                 <ChevronRightIcon
                   className={cn(
-                    "size-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100",
+                    "size-4 shrink-0 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100",
                     isExpanded ? "rotate-90" : "rotate-0"
                   )}
                 />
               </h3>
-              <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">
+              <div className="shrink-0 whitespace-nowrap text-xs tabular-nums text-muted-foreground sm:text-sm sm:text-right">
                 {period}
               </div>
             </div>
@@ -98,7 +98,7 @@ export const ResumeCard = ({
                 duration: 0.7,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="mt-2 text-xs sm:text-sm"
+              className="px-4 pb-4 text-xs text-muted-foreground sm:px-5 sm:pb-5 sm:text-sm"
             >
               {description}
             </motion.div>

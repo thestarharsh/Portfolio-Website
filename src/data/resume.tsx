@@ -7,11 +7,13 @@ export const DATA = {
   url: "https://portfolio-website-harsh-jain.vercel.app/",
   location: "Pune, Maharashtra",
   locationLink: "https://www.google.com/maps/place/Pune",
+  experience: 2,
   description:
     "I'm a Software Engineer specializing in building scalable frontend solutions and dynamic user interfaces. I thrive on solving complex problems and creating seamless digital experiences at innovative tech startups.",
   summary:
     "A Software Engineer (Frontend) specializing in React, with professional experience in building scalable, user-focused web applications. Currently, I work at an adtech startup, developing features used by major agencies like Hyundai, Jeep, Citroën, LimeRoad, and VW, while enhancing engagement through AI-driven solutions. I’ve also solved 1000+ coding problems and achieved notable milestones in competitive programming.",
   avatarUrl: "/myphoto.png",
+  resumeUrl: "/resume.pdf",
   skills: [
     "JavaScript",
     "TypeScript",
@@ -57,13 +59,13 @@ export const DATA = {
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "https://www.linkedin.com/in/harsh-jain-635636218/",
+        url: "https://www.linkedin.com/in/engharsh",
         icon: Icons.linkedin,
         navbar: true,
       },
       X: {
         name: "X",
-        url: "https://twitter.com/the_star_harsh",
+        url: "https://x.com/harshjaindev",
         icon: Icons.x,
         navbar: true,
       },
@@ -84,28 +86,28 @@ export const DATA = {
 
   work: [
     {
-      company: "Localium",
-      href: "https://localium.ai",
-      badges: [],
-      location: "Pune, Maharashtra",
-      title: "Software Engineer",
-      logoUrl: "/localium.png",
-      start: "Jun 2025",
-      end: "Present",
-      description:
-        "Developed advanced audience support features for PMax, Shopping PMax Google Ads, and Meta Advantage Plus Audiences. Implemented Bulk Google Campaign Keyword Targeting, resolved frontend vulnerabilities, and led code migration efforts to improve platform performance and maintainability. Leveraged AI-assisted tools like Claude Code to optimize development efficiency, automate repetitive tasks, and accelerate feature delivery.",
-    },
-    {
-      company: "Osmos (OnlineSales.ai)",
+      company: "Osmos",
       href: "https://osmos.ai",
       badges: [],
       location: "Pune, Maharashtra",
-      title: "Software Design Engineer Intern",
+      title: "Software Engineer",
+      logoUrl: "/osmos.png",
+      start: "May 2025",
+      end: "Present",
+      description:
+        "Led campaign management flow improvements for a PLG initiative and built Next.js microsites for Ashok Leyland dealers. As a founding engineer in OsmosX, built onboarding journeys for retailers to manage campaigns and reporting across marketplaces. Delivered multiple migration tracks to modernize legacy modules and improve release stability.",
+    },
+    {
+      company: "Osmos",
+      href: "https://onlinesales.ai",
+      badges: [],
+      location: "Pune, Maharashtra",
+      title: "Software Engineer Intern",
       logoUrl: "/osmos.png",
       start: "Jun 2024",
       end: "May 2025",
       description:
-        "Built and optimized Custom Audience Targeting features for Meta and Google campaigns, now used by 15+ agencies. Enhanced Used Car Inventory Management with dynamic Inventory Forms and Tables leveraging efficient state management. Developed Ad Creative Creation support for iOS & Android with Configuration-Based Overrides, improving maintainability and scalability of the codebase.",
+        "Built and optimized custom audience targeting for Meta and Google campaigns used by multiple agencies. Improved used-car inventory workflows with dynamic forms and tables, and supported ad creative configuration flows for iOS and Android channels.",
     },
     {
       company: "OpenBootcamp",
@@ -149,29 +151,51 @@ export const DATA = {
   ],
   projects: [
     {
-      title: "CozyGripz - A Phone Case E-Commerce Platform",
-      href: "https://cozygripz.com",
-      dates: "Jun 2025 - Jul 2025",
+      title: "instagrep: Instant Grep",
+      href: "https://github.com/thestarharsh/instagrep",
       active: true,
+      dates: "2026 - Present",
       description:
-        "Built a fully functional live e-commerce platform for phone cases using AI-assisted development tools like Cursor and Replit, with zero code manually written. Implemented Razorpay integration for seamless payments, optimized product listings, checkout flows, and overall user experience, demonstrating rapid prototyping and AI-driven web development.",
+        "Built an open-source, blazing-fast regex search engine powered by a sparse n-gram inverted index with mmap-backed lookup and compressed postings. Added ripgrep-compatible CLI behavior (50+ flags), a built-in MCP server for AI tools, and production-ready cross-platform support.",
       technologies: [
-        "Replit",
-        "Razorpay",
-        "PostgreSQL",
-        "Next.js",
-        "Tailwind CSS",
-        "Responsive Design"
+        "Rust",
+        "Sparse N-gram Index",
+        "Regex Engine",
+        "Mmap",
+        "CLI",
+        "MCP"
       ],
       links: [
-        { type: "Live", href: "https://cozygripz.com", icon: <Icons.globe className="size-3" /> },
-        { type: "Source", href: "https://github.com/thestarharsh/CozyTheme", icon: <Icons.github className="size-3" /> }
+        { type: "Source", href: "https://github.com/thestarharsh/instagrep", icon: <Icons.github className="size-3" /> }
       ],
-      image: "/cozygripz-preview.png",
+      image: "",
       video: "",
     },
     {
-      title: "Slide - An Instagram Chat Automation Platform",
+      title: "NewTube: A Video Streaming Platform",
+      href: "https://newtube-next16.vercel.app",
+      dates: "2025",
+      active: true,
+      description:
+        "Developed a full-stack video platform inspired by YouTube with home feed, watch page, creator studio, subscriptions, nested comments, watch history, and search suggestions. Implemented authenticated creator workflows, Mux-powered upload/playback pipeline, typed APIs with tRPC, and scalable data modeling with Drizzle ORM. Added responsive category and trending discovery flows, robust video visibility controls, and polished UX states for loading, empty results, and creator interactions.",
+      technologies: [
+        "Next.js",
+        "React",
+        "Tailwind CSS",
+        "Drizzle ORM",
+        "tRPC",
+        "Clerk",
+        "Mux"
+      ],
+      links: [
+        { type: "Live", href: "https://newtube-next16.vercel.app", icon: <Icons.globe className="size-3" /> },
+        { type: "Source", href: "https://github.com/thestarharsh/new-tube", icon: <Icons.github className="size-3" /> },
+      ],
+      image: "",
+      video: "",
+    },
+    {
+      title: "Slide: An Instagram Chat Automation Platform",
       href: "https://slide-next15.vercel.app",
       dates: "Jan 2025 - May 2025",
       active: true,
@@ -193,7 +217,7 @@ export const DATA = {
       video: "",
     },
     {
-      title: "Gitsync AI - GitHub & Audio Analyzer",
+      title: "Gitsync AI: GitHub & Audio Analyzer",
       href: "https://gitsync-next15.vercel.app",
       dates: "Dec 2024 - Jan 2025",
       active: true,
@@ -216,7 +240,7 @@ export const DATA = {
       video: "",
     },
     {
-      title: "Jira Clone - A Project Management Platform",
+      title: "Jira Clone: A Project Management Platform",
       href: "https://jira-clone-next15.vercel.app",
       dates: "Oct 2024 - Dec 2024",
       active: true,
@@ -235,6 +259,44 @@ export const DATA = {
         { type: "Source", href: "https://github.com/thestarharsh/jira-clone", icon: <Icons.github className="size-3" /> },
       ],
       image: "/jira-clone-preview.png",
+      video: "",
+    },
+    {
+      title: "CozyGripz: A Phone Case E-Commerce Platform",
+      href: "https://cozygripz.com",
+      dates: "Jun 2025 - Jul 2025",
+      active: true,
+      description:
+        "Built a live e-commerce platform for phone cases with optimized product listing, checkout, and payment flows. Integrated Razorpay and tuned UX interactions for conversion-focused browsing on mobile and desktop.",
+      technologies: [
+        "Next.js",
+        "PostgreSQL",
+        "Razorpay",
+        "Tailwind CSS",
+        "Responsive Design"
+      ],
+      links: [
+        { type: "Live", href: "https://cozygripz.com", icon: <Icons.globe className="size-3" /> },
+        { type: "Source", href: "https://github.com/thestarharsh/CozyTheme", icon: <Icons.github className="size-3" /> }
+      ],
+      image: "/cozygripz-preview.png",
+      video: "",
+    },
+    {
+      title: "Violet Mocks: Animated Landing Page",
+      href: "#",
+      dates: "2025",
+      active: true,
+      description:
+        "Built a small, visually rich landing page with GSAP-driven motion, scroll transitions, and polished interaction timing for a modern showcase experience.",
+      technologies: [
+        "GSAP",
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ],
+      links: [],
+      image: "",
       video: "",
     },
   ],
