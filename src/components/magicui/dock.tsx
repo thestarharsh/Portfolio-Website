@@ -2,7 +2,13 @@
 
 import React, { PropsWithChildren, useRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  type MotionValue,
+} from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -36,11 +42,23 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
     const mouseX = useMotionValue(Infinity);
 
     const renderChildren = () => {
-      return React.Children.map(children, (child: any) => {
+      return React.Children.map(children, (child) => {
+        if (!React.isValidElement(child)) {
+          return child;
+        }
+
+        const childType = child.type as any;
+        const isDockIcon =
+          childType === DockIcon || childType?.displayName === "DockIcon";
+
+        if (!isDockIcon) {
+          return child;
+        }
+
         return React.cloneElement(child, {
-          mouseX: mouseX,
-          magnification: magnification,
-          distance: distance,
+          mouseX,
+          magnification,
+          distance,
         });
       });
     };
@@ -69,7 +87,7 @@ export interface DockIconProps {
   size?: number;
   magnification?: number;
   distance?: number;
-  mouseX?: any;
+  mouseX?: MotionValue<number>;
   className?: string;
   children?: React.ReactNode;
   props?: PropsWithChildren;
@@ -85,8 +103,10 @@ const DockIcon = ({
   ...props
 }: DockIconProps) => {
   const ref = useRef<HTMLDivElement>(null);
+  const fallbackMouseX = useMotionValue(Infinity);
+  const activeMouseX = mouseX ?? fallbackMouseX;
 
-  const distanceCalc = useTransform(mouseX, (val: number) => {
+  const distanceCalc = useTransform(activeMouseX, (val: number) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
 
     return val - bounds.x - bounds.width / 2;

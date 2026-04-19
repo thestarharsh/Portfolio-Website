@@ -1,6 +1,8 @@
 import { CertificationCard } from "@/components/certification-card";
 import { GamifiedHub } from "@/components/gamified-hub";
+import { JourneyRail } from "@/components/journey-rail";
 import dynamic from "next/dynamic";
+import { ScrollProgress } from "@/components/scroll-progress";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight, CheckCircle2, Download, Mail } from "lucide-react";
@@ -29,10 +31,11 @@ const nonInstagrepProjects = DATA.projects.filter(
 );
 const featuredProjects = nonInstagrepProjects.slice(0, 3);
 const extraProjects = nonInstagrepProjects.slice(3);
-const quickStats = [
-  `${DATA.experience}+ YOE in Software Engineering`,
-  `${DATA.projects.length}+ Shipped Projects`,
-  "1000+ DSA Problems Solved",
+const trustSignals = [
+  `${DATA.experience}+ years building production web products`,
+  `${DATA.projects.length}+ shipped builds across AI, SaaS, and Tooling`,
+  "1000+ DSA problems solved with strong implementation depth",
+  "Frontend engineer shipping features for major use cases.",
 ];
 const achievementData = [
   {
@@ -61,13 +64,28 @@ const instagrepHighlights = [
   "Built-in MCP server so AI coding tools can call fast indexed search directly",
   "Cross-platform support across Linux, macOS, and Windows",
 ];
+const journeySections = [
+  { id: "hero", label: "Start" },
+  { id: "trust", label: "Trust" },
+  { id: "about", label: "Story" },
+  { id: "experience", label: "Experience" },
+  { id: "skills", label: "Stack" },
+  { id: "developer-questline", label: "Capabilities" },
+  { id: "instagrep", label: "Open Source" },
+  { id: "projects", label: "Projects" },
+  { id: "hackathons", label: "Certs" },
+  { id: "coding-profiles", label: "Profiles" },
+  { id: "contact", label: "Contact" },
+];
 
 export default function Page() {
   const firstName = DATA.name.split(" ")[0];
 
   return (
     <main className="flex min-h-[100dvh] flex-col gap-10 pb-10 sm:gap-12">
-      <section id="hero">
+      <ScrollProgress />
+      <JourneyRail sections={journeySections} />
+      <section id="hero" className="journey-stop">
         <div className="relative overflow-hidden rounded-3xl border border-border/70 bg-card/60 p-6 shadow-2xl shadow-primary/10 backdrop-blur-sm sm:p-10">
           <div className="animated-orb absolute -left-16 top-10 h-44 w-44 rounded-full bg-primary/35" />
           <div className="animated-orb animated-orb-delay absolute -right-12 bottom-0 h-52 w-52 rounded-full bg-accent/25" />
@@ -83,7 +101,7 @@ export default function Page() {
                 delay={BLUR_FADE_DELAY}
                 className="text-3xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
                 yOffset={8}
-                text={`Building thoughtful web experiences, one polished release at a time.`}
+                text={`I build AI first and product focused full stack experiences that ship fast and scale cleanly.`}
               />
               <BlurFadeText
                 className="max-w-2xl text-base text-muted-foreground sm:text-lg"
@@ -105,7 +123,7 @@ export default function Page() {
                     href="#projects"
                     className={cn(buttonVariants({ size: "lg" }), "w-full rounded-full px-6 sm:w-auto")}
                   >
-                    View Projects
+                    Explore My Work
                     <ArrowUpRight className="ml-2 size-4" />
                   </Link>
                   <Link
@@ -128,7 +146,7 @@ export default function Page() {
                     )}
                   >
                     <Download className="mr-2 size-4" />
-                    Download Resume
+                    Open Resume
                   </Link>
                 </div>
               </BlurFade>
@@ -140,24 +158,33 @@ export default function Page() {
               </Avatar>
             </BlurFade>
           </div>
-          <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <div className="relative mt-8 grid gap-3 sm:grid-cols-3">
-              {quickStats.map((stat) => (
-                <div
-                  key={stat}
-                  className="rounded-2xl border border-border/60 bg-background/65 px-4 py-3 text-sm text-muted-foreground backdrop-blur"
-                >
-                  {stat}
-                </div>
-              ))}
-            </div>
-          </BlurFade>
         </div>
       </section>
 
-      <section id="about">
+      <section id="trust" className="journey-stop">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <h2 className="text-2xl font-bold tracking-tight">About</h2>
+          <div className="rounded-3xl border border-border/60 bg-card/55 p-5 shadow-xl shadow-primary/5 backdrop-blur-sm sm:p-6">
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">Quick Facts</h2>
+              <Badge className="rounded-full px-3 py-1">Fact</Badge>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {trustSignals.map((signal) => (
+                <div
+                  key={signal}
+                  className="rounded-2xl border border-border/60 bg-background/65 px-4 py-3 text-sm text-muted-foreground backdrop-blur"
+                >
+                  {signal}
+                </div>
+              ))}
+            </div>
+          </div>
+        </BlurFade>
+      </section>
+
+      <section id="about" className="journey-stop">
+        <BlurFade delay={BLUR_FADE_DELAY * 3}>
+          <h2 className="text-2xl font-bold tracking-tight">My story</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
           <Markdown className="prose mt-4 max-w-none rounded-2xl border border-border/60 bg-card/60 p-6 text-pretty font-sans text-sm leading-7 text-muted-foreground shadow-xl shadow-primary/5 dark:prose-invert sm:text-base">
@@ -166,7 +193,7 @@ export default function Page() {
         </BlurFade>
       </section>
 
-      <section id="experience" className="grid gap-5 lg:grid-cols-2">
+      <section id="experience" className="journey-stop grid gap-5 lg:grid-cols-2">
         <div className="rounded-3xl border border-border/60 bg-card/55 p-5 shadow-xl shadow-primary/5 backdrop-blur-sm sm:p-6">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
             <h2 className="text-2xl font-bold tracking-tight">Experience</h2>
@@ -211,7 +238,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="skills" className="rounded-3xl border border-border/60 bg-card/55 p-5 shadow-xl shadow-primary/5 backdrop-blur-sm sm:p-6">
+      <section id="skills" className="journey-stop rounded-3xl border border-border/60 bg-card/55 p-5 shadow-xl shadow-primary/5 backdrop-blur-sm sm:p-6">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
             <h2 className="text-2xl font-bold tracking-tight">Tech Stack</h2>
@@ -232,14 +259,14 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="developer-questline" className="pt-1">
+      <section id="developer-questline" className="journey-stop pt-1">
         <BlurFade delay={BLUR_FADE_DELAY * 10.5}>
           <GamifiedHub achievements={achievementData} skillTree={skillTreeData} />
         </BlurFade>
       </section>
 
       {instagrepProject && (
-        <section id="instagrep">
+        <section id="instagrep" className="journey-stop">
           <BlurFade delay={BLUR_FADE_DELAY * 10.8}>
             <div className="rounded-3xl border border-border/60 bg-card/60 p-6 shadow-xl shadow-primary/10 sm:p-8">
               <div className="space-y-4">
@@ -290,7 +317,7 @@ export default function Page() {
         </section>
       )}
 
-      <section id="projects">
+      <section id="projects" className="journey-stop">
         <div className="w-full space-y-8 py-6">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
@@ -320,7 +347,6 @@ export default function Page() {
                   tags={project.technologies}
                   image={project.image}
                   video={project.video}
-                  links={project.links}
                 />
               </BlurFade>
             ))}
@@ -342,7 +368,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="hackathons">
+      <section id="hackathons" className="journey-stop">
         <div className="w-full space-y-8 py-6">
           <BlurFade delay={BLUR_FADE_DELAY * 13}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -375,35 +401,27 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
-      <section id="coding-profiles">
+      <section id="coding-profiles" className="journey-stop">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
           <CodingProfiles profiles={DATA.codingProfiles} />
         </BlurFade>
       </section>
-      <section id="contact">
+      <section id="contact" className="journey-stop">
         <div className="grid w-full items-center justify-center gap-4 rounded-3xl border border-border/60 bg-card/60 px-4 py-12 text-center shadow-2xl shadow-primary/10 md:px-6">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
             <div className="space-y-3">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                Let&apos;s build something meaningful
+                Let&apos;s build something
               </h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-lg">
-                Open to impactful frontend opportunities and product engineering conversations.
+                One clear next step. Reach out and we can discuss your product, team, and roadmap.
               </p>
-              <p className="mx-auto max-w-[600px] text-sm text-muted-foreground">
-                For quick replies, reach out on{" "}
-                <Link
-                  href={DATA.contact.social.X.url}
-                  className="text-primary hover:underline"
-                >
-                  X/Twitter
-                </Link>{" "}
-                or email me at{" "}
-                <Link href={`mailto:${DATA.contact.email}`} className="text-primary hover:underline">
-                  {DATA.contact.email}
-                </Link>
-                .
-              </p>
+              <Link
+                href={`mailto:${DATA.contact.email}`}
+                className={cn(buttonVariants({ size: "lg" }), "rounded-full px-8")}
+              >
+                Contact Harsh
+              </Link>
             </div>
           </BlurFade>
         </div>

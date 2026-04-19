@@ -111,6 +111,16 @@
   animation-delay: -4.2s;
 }
 
+.journey-stop {
+  scroll-margin-top: 5.5rem;
+}
+
+@media (min-width: 1024px) {
+  .journey-stop {
+    scroll-margin-top: 6.5rem;
+  }
+}
+
 h3 code {
   @apply !text-lg md:!text-xl;
 }
