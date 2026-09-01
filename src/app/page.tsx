@@ -1,8 +1,6 @@
 import { CertificationCard } from "@/components/certification-card";
 import { GamifiedHub } from "@/components/gamified-hub";
-import { JourneyRail } from "@/components/journey-rail";
 import dynamic from "next/dynamic";
-import { ScrollProgress } from "@/components/scroll-progress";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight, CheckCircle2, Download, Mail } from "lucide-react";
@@ -32,10 +30,9 @@ const nonInstagrepProjects = DATA.projects.filter(
 const featuredProjects = nonInstagrepProjects.slice(0, 3);
 const extraProjects = nonInstagrepProjects.slice(3);
 const trustSignals = [
-  `${DATA.experience}+ years building production web products`,
-  `${DATA.projects.length}+ shipped builds across AI, SaaS, and Tooling`,
-  "1000+ DSA problems solved with strong implementation depth",
-  "Frontend engineer shipping features for major use cases.",
+  { value: "2+", label: "years building production web products" },
+  { value: `${DATA.projects.length}+`, label: "product builds shipped across AI, SaaS, and tooling" },
+  { value: "1000+", label: "DSA problems solved with strong implementation depth" },
 ];
 const achievementData = [
   {
@@ -64,66 +61,52 @@ const instagrepHighlights = [
   "Built-in MCP server so AI coding tools can call fast indexed search directly",
   "Cross-platform support across Linux, macOS, and Windows",
 ];
-const journeySections = [
-  { id: "hero", label: "Start" },
-  { id: "trust", label: "Trust" },
-  { id: "about", label: "Story" },
-  { id: "experience", label: "Experience" },
-  { id: "skills", label: "Stack" },
-  { id: "developer-questline", label: "Capabilities" },
-  { id: "instagrep", label: "Open Source" },
-  { id: "projects", label: "Projects" },
-  { id: "hackathons", label: "Certs" },
-  { id: "coding-profiles", label: "Profiles" },
-  { id: "contact", label: "Contact" },
-];
-
 export default function Page() {
   const firstName = DATA.name.split(" ")[0];
 
   return (
     <main className="flex min-h-[100dvh] flex-col gap-10 pb-10 sm:gap-12">
-      <ScrollProgress />
-      <JourneyRail sections={journeySections} />
       <section id="hero" className="journey-stop">
-        <div className="relative overflow-hidden rounded-3xl border border-border/70 bg-card/60 p-6 shadow-2xl shadow-primary/10 backdrop-blur-sm sm:p-10">
+        <div className="relative overflow-hidden rounded-[28px] border border-border/70 bg-card/60 p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur-sm sm:p-8 lg:p-10">
           <div className="animated-orb absolute -left-16 top-10 h-44 w-44 rounded-full bg-primary/35" />
           <div className="animated-orb animated-orb-delay absolute -right-12 bottom-0 h-52 w-52 rounded-full bg-accent/25" />
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.24),transparent_40%)]" />
-          <div className="relative flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <div className="flex max-w-3xl flex-1 flex-col space-y-4">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.20),transparent_42%)]" />
+
+          <div className="relative flex flex-col gap-8 xl:flex-row xl:items-center xl:justify-between">
+            <div className="flex max-w-3xl flex-1 flex-col gap-5">
+              <BlurFade delay={BLUR_FADE_DELAY}>
+                <div className="flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.24em] text-muted-foreground">
+                  <span className="inline-flex size-2 rounded-full bg-emerald-500 shadow-[0_0_12px_rgba(34,197,94,0.8)]" />
+                  Available for product work
+                </div>
+              </BlurFade>
+
               <BlurFade delay={BLUR_FADE_DELAY}>
                 <Badge className="w-fit rounded-full bg-primary/15 px-3 py-1 text-primary hover:bg-primary/15">
-                  Product Focused Frontend Engineer
+                  Frontend Engineer • SaaS + AI Products
                 </Badge>
               </BlurFade>
+
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="text-3xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
+                className="max-w-3xl text-4xl font-black tracking-[-0.06em] text-foreground sm:text-5xl lg:text-6xl"
                 yOffset={8}
-                text={`I build AI first and product focused full stack experiences that ship fast and scale cleanly.`}
+                text="Frontend engineer building polished SaaS and AI products that ship fast and feel premium."
               />
+
               <BlurFadeText
-                className="max-w-2xl text-base text-muted-foreground sm:text-lg"
+                className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg"
                 delay={BLUR_FADE_DELAY}
                 text={`Hi, I'm ${firstName}. ${DATA.description}`}
               />
-              <BlurFade delay={BLUR_FADE_DELAY * 2}>
-                <div className="flex flex-wrap gap-2">
-                  {DATA.skills.slice(0, 5).map((skill) => (
-                    <Badge key={skill} variant="secondary" className="rounded-full px-2.5 py-1">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </BlurFade>
+
               <BlurFade delay={BLUR_FADE_DELAY * 2.5}>
                 <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <Link
                     href="#projects"
                     className={cn(buttonVariants({ size: "lg" }), "w-full rounded-full px-6 sm:w-auto")}
                   >
-                    Explore My Work
+                    View Projects
                     <ArrowUpRight className="ml-2 size-4" />
                   </Link>
                   <Link
@@ -134,7 +117,7 @@ export default function Page() {
                     )}
                   >
                     <Mail className="mr-2 size-4" />
-                    Contact Me
+                    Let&apos;s talk
                   </Link>
                   <Link
                     href={DATA.resumeUrl}
@@ -146,16 +129,40 @@ export default function Page() {
                     )}
                   >
                     <Download className="mr-2 size-4" />
-                    Open Resume
+                    Resume
                   </Link>
                 </div>
               </BlurFade>
             </div>
-            <BlurFade delay={BLUR_FADE_DELAY * 2} className="self-center lg:self-auto">
-              <Avatar className="size-28 border-2 border-primary/30 shadow-xl shadow-primary/20 sm:size-32">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                <AvatarFallback>{DATA.initials}</AvatarFallback>
-              </Avatar>
+
+            <BlurFade delay={BLUR_FADE_DELAY * 2} className="w-full xl:max-w-[320px]">
+              <div className="rounded-[24px] border border-border/70 bg-background/70 p-4 shadow-[0_18px_45px_rgba(15,23,42,0.08)] backdrop-blur-sm">
+                <div className="flex items-center gap-3">
+                  <Avatar className="size-14 border-2 border-primary/30 shadow-lg shadow-primary/20 sm:size-16">
+                    <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
+                    <AvatarFallback>{DATA.initials}</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <div className="text-lg font-semibold text-foreground">{DATA.name}</div>
+                    <div className="text-sm text-muted-foreground">Frontend engineer</div>
+                  </div>
+                </div>
+
+                <div className="mt-4 space-y-3 border-t border-border/70 pt-4 text-sm text-muted-foreground">
+                  <div className="flex items-center justify-between gap-3">
+                    <span>Focus</span>
+                    <span className="font-medium text-foreground">SaaS · AI</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-3">
+                    <span>Style</span>
+                    <span className="font-medium text-foreground">Tangibly useful</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-3">
+                    <span>Best at</span>
+                    <span className="font-medium text-foreground">UI + Development</span>
+                  </div>
+                </div>
+              </div>
             </BlurFade>
           </div>
         </div>
@@ -163,18 +170,25 @@ export default function Page() {
 
       <section id="trust" className="journey-stop">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <div className="rounded-3xl border border-border/60 bg-card/55 p-5 shadow-xl shadow-primary/5 backdrop-blur-sm sm:p-6">
-            <div className="mb-4 flex items-center justify-between gap-3">
-              <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">Quick Facts</h2>
-              <Badge className="rounded-full px-3 py-1">Fact</Badge>
+          <div className="rounded-3xl border border-border/60 bg-card/55 p-5 shadow-[0_14px_30px_rgba(15,23,42,0.04)] backdrop-blur-sm sm:p-6">
+            <div className="mb-5 flex items-center justify-between gap-3">
+              <div>
+                <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                  Why teams hire me
+                </p>
+                <h2 className="mt-2 text-xl font-semibold tracking-tight sm:text-2xl">
+                  Built for product velocity.
+                </h2>
+              </div>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-3 md:grid-cols-3">
               {trustSignals.map((signal) => (
                 <div
-                  key={signal}
-                  className="rounded-2xl border border-border/60 bg-background/65 px-4 py-3 text-sm text-muted-foreground backdrop-blur"
+                  key={signal.label}
+                  className="rounded-2xl border border-border/60 bg-background/65 px-4 py-4 text-left shadow-sm"
                 >
-                  {signal}
+                  <div className="text-3xl font-black tracking-tight text-foreground">{signal.value}</div>
+                  <p className="mt-2 text-sm text-muted-foreground">{signal.label}</p>
                 </div>
               ))}
             </div>
@@ -407,21 +421,37 @@ export default function Page() {
         </BlurFade>
       </section>
       <section id="contact" className="journey-stop">
-        <div className="grid w-full items-center justify-center gap-4 rounded-3xl border border-border/60 bg-card/60 px-4 py-12 text-center shadow-2xl shadow-primary/10 md:px-6">
+        <div className="grid w-full items-center justify-center gap-4 rounded-[28px] border border-border/60 bg-card/60 px-4 py-12 text-center shadow-[0_20px_60px_rgba(15,23,42,0.08)] md:px-8">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
-            <div className="space-y-3">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                Let&apos;s build something
+            <div className="space-y-4">
+              <div className="text-xs font-medium uppercase tracking-[0.24em] text-muted-foreground">
+                Let&apos;s build something meaningful
+              </div>
+              <h2 className="text-3xl font-black tracking-[-0.05em] sm:text-5xl">
+                Need a product that feels premium and ships cleanly?
               </h2>
-              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-lg">
-                One clear next step. Reach out and we can discuss your product, team, and roadmap.
+              <p className="mx-auto max-w-[620px] text-muted-foreground md:text-lg">
+                I work with teams that want clearer UX, cleaner frontend execution, and product thinking that keeps momentum high.
               </p>
-              <Link
-                href={`mailto:${DATA.contact.email}`}
-                className={cn(buttonVariants({ size: "lg" }), "rounded-full px-8")}
-              >
-                Contact Harsh
-              </Link>
+              <div className="flex flex-col justify-center gap-3 pt-2 sm:flex-row">
+                <Link
+                  href={`mailto:${DATA.contact.email}`}
+                  className={cn(buttonVariants({ size: "lg" }), "rounded-full px-8")}
+                >
+                  Contact Harsh
+                </Link>
+                <Link
+                  href={DATA.resumeUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={cn(
+                    buttonVariants({ variant: "outline", size: "lg" }),
+                    "rounded-full border-border/70 bg-background/40 px-8"
+                  )}
+                >
+                  View Resume
+                </Link>
+              </div>
             </div>
           </BlurFade>
         </div>
